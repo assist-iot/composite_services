@@ -1,5 +1,5 @@
 # Composite services manager
-In this repository is included the Composite services manager of the ASSIST-IoT Manageability enablers. The two other enablers are in [this repository](https://github.com/assist-iot/managability_enablers).
+In this repository is included the Composite services manager of the ASSIST-IoT Manageability enablers. The other two manageability enablers are in [this repository](https://github.com/assist-iot/managability_enablers).
 
 ## Repository structure
 This repository is structured in 4 folders:
