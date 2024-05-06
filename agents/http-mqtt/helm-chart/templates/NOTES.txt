@@ -1,0 +1,3 @@
+This Helm chart has been created using the ASSIST-IoT Helm chart generator!
+
+MQTT to HTTP agent deployed!

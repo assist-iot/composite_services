@@ -1,0 +1,50 @@
+# Default values for enabler.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# String to partially override enabler.fullname template (will maintain the release name)
+nameOverride: ""
+# String to fully override enabler.fullname template
+fullnameOverride: ""
+# Deploy all the components in the same node
+enablerNodeSelector: {}
+
+# Component agent values
+agent:
+  tier: external
+  image:
+    repository: ravaga/assistiot-agent-http-mqtt
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+
+  replicaCount: 1
+
+  # The specification of the resources is needed for the proper functioning 
+  # of the Smart Orchestrator enabler (requests)
+  # and of the Resource provisioning enabler (limits)
+  resources: {}
+
+  autoscaling:
+    enabled: false
+
+  podSecurityContext: {}
+  securityContext: {}
+  
+  envVars:
+    in:
+      url: "http://ltse-api:8080/nosql/index/_search"
+      httpmethod: post
+    node:
+      requestInterval: 5
+      requestBody: '{"size": 1}'
+      translation: ""
+    out:
+      topic: topic
+      url: "edbe:1883"
+
+  imagePullSecrets: []
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
