@@ -19,7 +19,7 @@ core:
   # Configuration of the container image.
   imagePullSecrets: []
   image:
-    repository: gitlab.assist-iot.eu:5050/enablers-registry/public/composite-services/core
+    repository: assistiot/composite-services-manager_core
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""
     pullPolicy: IfNotPresent
@@ -72,7 +72,7 @@ nodered:
   # Configuration of the container image.
   imagePullSecrets: []
   image:
-    repository: gitlab.assist-iot.eu:5050/enablers-registry/public/composite-services/nodered
+    repository: assistiot/composite-services-manager_nodered
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""
     pullPolicy: IfNotPresent
