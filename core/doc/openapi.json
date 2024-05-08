@@ -1,0 +1,185 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.1.0",
+    "title": "Composite services manager enabler OpenAPI",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://redocly.github.io/openapi-template/logo.png"
+    }
+  },
+  "paths": {
+    "/version": {
+      "get": {
+        "tags": [
+          "Common endpoints"
+        ],
+        "summary": "Get version",
+        "description": "Get current enabler `version`",
+        "operationId": "getVersion",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Version"
+                },
+                "example": {
+                  "name": "Composite services manager",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "Common endpoints"
+        ],
+        "summary": "Get health status",
+        "description": "Returns enabler's health status",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Healthy"
+          },
+          "500": {
+            "description": "Unhealthy"
+          }
+        }
+      }
+    },
+    "/api-export": {
+      "get": {
+        "tags": [
+          "Common endpoints"
+        ],
+        "summary": "Get OpenAPI documentation",
+        "description": "Returns enabler's OpenAPI documentation",
+        "operationId": "getOpenAPI",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "openapi": "3.0.2",
+                  "info": {
+                    "version": "2.0.0",
+                    "title": "Composite services manager enabler OpenAPI",
+                    "license": {
+                      "name": "Apache 2.0",
+                      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+                    }
+                  },
+                  "...": "..."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "tags": [
+          "Composite services"
+        ],
+        "summary": "Deploy the composite services sequences",
+        "requestBody": {
+          "description": "Node-RED flows expressing the composite services sequences to deploy",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Flows"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deploying sequences"
+          },
+          "500": {
+            "description": "Error deploying sequences"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Version": {
+        "type": "object",
+        "properties": {
+          "enabler": {
+            "description": "Enabler's name",
+            "type": "string",
+            "maxLength": 128
+          },
+          "version": {
+            "description": "Current enabler's version",
+            "type": "string",
+            "maxLength": 128
+          }
+        }
+      },
+      "Flows": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Flow"
+        }
+      },
+      "Flow": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Node-RED flow id",
+            "type": "string"
+          },
+          "label": {
+            "description": "Node-RED flow label",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Node-RED flow status",
+            "type": "boolean"
+          },
+          "info": {
+            "description": "Node-RED flow info",
+            "type": "string"
+          },
+          "env": {
+            "description": "Node-RED flow env",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nodes": {
+            "description": "Node-RED nodes",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
