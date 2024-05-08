@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nodered.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "nodered.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.nodered.autoscaling.enabled }}
+  replicas: {{ .Values.nodered.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "nodered.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "nodered.labels" . | nindent 8 }}
+    spec:
+      {{- with .Values.nodered.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.enablerNodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if not .Values.enablerNodeSelector }}
+        {{- with .Values.nodered.nodeSelector }}
+      nodeSelector:
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      {{- with .Values.nodered.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodered.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.nodered.podSecurityContext | nindent 8 }}
+      containers:
+        - name: nodered
+          securityContext:
+            {{- toYaml .Values.nodered.securityContext | nindent 12 }}
+          image: "{{ .Values.nodered.image.repository }}:{{ .Values.nodered.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.nodered.image.pullPolicy }}
+          ports:
+            - name: nodered
+              containerPort: {{ .Values.nodered.service.ports.nodered.containerPort }}
+              protocol: {{ .Values.nodered.service.ports.nodered.protocol }}
+          resources:
+            {{- toYaml .Values.nodered.resources | nindent 12 }}
+          env:
+            - name: CORE_API_URL
+              value: {{ include "core.apiUrl" . | quote }}

@@ -1,0 +1,111 @@
+# Default values for enabler.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# String to partially override enabler.fullname template (will maintain the release name).
+nameOverride: ""
+# String to fully override enabler.fullname template.
+fullnameOverride: ""
+# Deploy all the components in specific K8s node(s).
+enablerNodeSelector: {}
+# Cilium Multi-cluster global service.
+globalService: false
+
+# Component core values.
+core:
+  tier: external
+  replicaCount: 1
+
+  # Configuration of the container image.
+  imagePullSecrets: []
+  image:
+    repository: gitlab.assist-iot.eu:5050/enablers-registry/public/composite-services/core
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+    pullPolicy: IfNotPresent
+  
+  # Configuration of the service: type and ports.
+  service:
+    type: ClusterIP
+    ports:
+      api:
+        port: 3000
+        targetPort: 3000
+        containerPort: 3000
+        nodePort: ""
+        protocol: TCP
+
+  # The specification of the resources is needed for the proper functioning 
+  # of the Smart Orchestrator enabler (requests)
+  # and of the Resource provisioning enabler (limits).
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: false
+
+  podSecurityContext: {}
+  securityContext: {}
+
+  envVars:
+    smartOrchestratorUrl: "http://smart-api:8080"
+    validNodes: "edbe,ltse,http-endpoint,mqtt-http,http-http,http-mqtt"
+    helmChartRepository: public
+    ltseUrl: "http://ltse-api:8080"
+    ltseIndex: "composite-services-flows"
+
+  # Configure this parameters to deploy the component in specific K8s node(s).
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Component nodered values.
+nodered:
+  tier: internal
+  replicaCount: 1
+
+  # Configuration of the container image.
+  imagePullSecrets: []
+  image:
+    repository: gitlab.assist-iot.eu:5050/enablers-registry/public/composite-services/nodered
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+    pullPolicy: IfNotPresent
+  
+  # Configuration of the service: type and ports.
+  service:
+    type: NodePort
+    ports:
+      nodered:
+        port: 1880
+        targetPort: 1880
+        containerPort: 1880
+        nodePort: ""
+        protocol: TCP
+
+  # The specification of the resources is needed for the proper functioning 
+  # of the Smart Orchestrator enabler (requests)
+  # and of the Resource provisioning enabler (limits).
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  autoscaling:
+    enabled: false
+
+  podSecurityContext: {}
+  securityContext: {}
+
+  # Configure this parameters to deploy the component in specific K8s node(s).
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
