@@ -1,0 +1,127 @@
+<script type="text/javascript">
+  RED.nodes.registerType("ltse", {
+    category: "ASSIST-IoT",
+    color: "#c47a98",
+    defaults: {
+      name: { value: "" },
+      ltseurl: { value: "" },
+      url: { value: "" },
+      storagetype: { value: "" },
+      properties: { value: ["url","httpmethod"] },
+      elasticindex: { value: "" },
+      sqltable: { value: "" },
+      operation: { value: "search" },
+      addparams: { value: "" },
+      interfacetype: { value: "HTTP" },
+      httpmethod: { value: "" }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "assist-logo.png",
+    label: function () {
+      return this.name || "LTSE";
+    },
+    oneditprepare: function () {
+      $("#node-input-storagetype").typedInput({
+        types: [
+          {
+            value: "nosql",
+            options: [
+              { value: "nosql", label: "noSQL"},
+              { value: "sql", label: "SQL"}
+            ]
+          }
+        ]
+      }),
+      $("#node-input-operation").typedInput({
+        types: [
+          {
+            value: "search",
+            options: [
+              { value: "search", label: "search"},
+              { value: "insert", label: "insert"}
+            ]
+          }
+        ]
+      })
+
+      var node = this;
+      var scope = node.scope || [];
+
+      $("#node-input-storagetype").on("change", function(e) {
+        var storageType = $(this).val();
+        if (storageType === "sql") {
+          $(".sql").show();
+          $(".no-sql").hide();
+        } else {
+          $(".no-sql").show();
+          $(".sql").hide();
+        }
+        // node._resize();
+      });
+    },
+    oneditsave: function () {
+      const storageType = $("#node-input-storagetype").val()
+      const operation = $("#node-input-operation").val()
+      const addParams = $("#node-input-addparams").val()
+      var finalUrl = $("#node-input-ltseurl").val() + '/' + $("#node-input-storagetype").val() + '/api/'
+
+      if (storageType === 'nosql') {
+        var esOperation = (operation === 'search') ? '_search' : '_doc'
+        finalUrl = finalUrl + $("#node-input-elasticindex").val() + '/' + esOperation
+        this.httpmethod = 'post'
+      } else if (storageType === 'sql') {
+        finalUrl += $("#node-input-sqltable").val()
+        switch (operation) {
+          case 'search':
+            this.httpmethod = 'get'
+            break;
+          case 'insert':
+          case 'upsert':
+            this.httpmethod = 'post'
+            break;
+          default:
+            this.httpmethod = 'post'
+            break;
+        }
+      }
+      this.url = finalUrl
+      if(addParams) this.url = this.url + '?' + $("#node-input-addparams").val()
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="ltse">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-ltseurl"><i class="fa fa-tag"></i> LTSE url</label>
+    <input type="text" id="node-input-ltseurl" placeholder="LTSE url" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-storagetype"><i class="fa fa-tag"></i> LTSE storage type</label>
+    <input type="text" id="node-input-storagetype" placeholder="SQL/noSQL" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-operation"><i class="fa fa-tag"></i> Operation</label>
+    <input type="text" id="node-input-operation" placeholder="operation" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-addparams"><i class="fa fa-tag"></i> Additional parameters</label>
+    <input type="text" id="node-input-addparams" placeholder="Query additional params" />
+  </div>
+  <div class="form-row no-sql">
+    <label for="node-input-elasticindex"><i class="fa fa-tag"></i> Elasticsearch index</label>
+    <input type="text" id="node-input-elasticindex" placeholder="index" />
+  </div>
+  <div class="form-row sql">
+    <label for="node-input-sqltable"><i class="fa fa-tag"></i> SQL table</label>
+    <input type="text" id="node-input-sqltable" placeholder="SQL table" />
+  </div>
+</script>
+
+<script type="text/html" data-help-name="ltse">
+  <p>Long Term Storage Enabler node</p>
+</script>

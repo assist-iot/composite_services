@@ -13,54 +13,33 @@ enablerNodeSelector: {}
 agent:
   tier: external
   image:
-    repository: yourRepository
+    repository: assistiot/composite-services-manager_agent-mqtt-http
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: "latest"
 
   replicaCount: 1
-  service:
-    type: NodePort
-    nodePort: ""
-    port: 80
-    targetPort: 80
-    containerPort: 80
-    protocol: TCP
 
   # The specification of the resources is needed for the proper functioning 
   # of the Smart Orchestrator enabler (requests)
   # and of the Resource provisioning enabler (limits)
   resources: {}
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
 
   autoscaling:
     enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
 
   podSecurityContext: {}
-    # fsGroup: 2000
-
   securityContext: {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
-
-  # Include here the environment variables to be used in the component's manifest (container section).
-  # Here and in the manifest is included an example.
+  
   envVars:
-    exampleEnvVar: exampleValue
-
+    in:
+      topic: topic
+      url: "edbe:1883"
+    node:
+      translation: ""
+    out:
+      url: "http://ltse-api:8080/nosql/index/_doc"
+      httpmethod: post
 
   imagePullSecrets: []
   nodeSelector: {}

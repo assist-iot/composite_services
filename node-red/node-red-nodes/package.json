@@ -1,0 +1,27 @@
+{
+  "name": "assistiot-manageability",
+  "version": "1.0.0",
+  "description": "Node-red nodes for the ASSIST-IoT's manageability enabler composite services manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ASSIST-IoT",
+    "manageability",
+    "composite-services",
+    "enabler",
+    "flow"
+  ],
+  "author": "SATRD-UPV",
+  "license": "ISC",
+  "node-red" : {
+    "nodes": {
+      "edbe": "edbe/edbe.js",
+      "ltse": "ltse/ltse.js",
+      "mqtt-http": "mqtt-http/mqtt-http.js",
+      "http-mqtt": "http-mqtt/http-mqtt.js",
+      "http-endpoint": "http-endpoint/http-endpoint.js"
+    }
+  }
+}

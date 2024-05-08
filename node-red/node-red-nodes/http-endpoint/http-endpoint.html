@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  RED.nodes.registerType("http-endpoint", {
+    category: "ASSIST-IoT",
+    color: "#c47a98",
+    defaults: {
+      name: { value: "" },
+      url: { value: "" },
+      properties: { value: ["url", "httpmethod"] },
+      interfacetype: { value: "HTTP" },
+      httpmethod: { value: "post" }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "assist-logo.png",
+    label: function () {
+      return this.name || "HTTP ENDPOINT";
+    },
+    oneditprepare: function () {
+      $("#node-input-httpmethod").typedInput({
+        types: [
+          {
+            value: "post",
+            options: [
+              { value: "get", label: "GET"},
+              { value: "post", label: "POST"},
+              { value: "put", label: "PUT"},
+              { value: "patch", label: "PATCH"}
+            ]
+          }
+        ]
+      })
+    }
+  });
+</script>
+
+<script type="text/html" data-template-name="http-endpoint">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-url"><i class="fa fa-tag"></i> Url </label>
+    <input type="text" id="node-input-url" placeholder="url" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-httpmethod"><i class="fa fa-tag"></i> HTTP method</label>
+    <input type="text" id="node-input-httpmethod" placeholder="HTTP method" />
+  </div>
+</script>
+
+<script type="text/html" data-help-name="http-endpoint">
+  <p>Generic HTTP endpoint node</p>
+</script>

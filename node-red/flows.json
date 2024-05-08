@@ -1,0 +1,100 @@
+[
+    {
+        "id": "d2eab7a51bbf176c",
+        "type": "tab",
+        "label": "Composite services main flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f6fab585535b1d25",
+        "type": "http request",
+        "z": "d2eab7a51bbf176c",
+        "name": "Update core",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "${CORE_API_URL}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "credentials": {},
+        "x": 630,
+        "y": 80,
+        "wires": [
+            [
+                "39968f7d85184e43"
+            ]
+        ]
+    },
+    {
+        "id": "39968f7d85184e43",
+        "type": "debug",
+        "z": "d2eab7a51bbf176c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "88e59a0c24776cfc",
+        "type": "inject",
+        "z": "d2eab7a51bbf176c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Launch flows",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "f6fab585535b1d25"
+            ]
+        ]
+    },
+    {
+        "id": "4f087d1976b9f854",
+        "type": "comment",
+        "z": "d2eab7a51bbf176c",
+        "name": "Core flow",
+        "info": "# DON'T DELETE THIS NODES",
+        "x": 300,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "18a37d7f031f59e2",
+        "type": "comment",
+        "z": "d2eab7a51bbf176c",
+        "name": "Don't delete this flow!",
+        "info": "",
+        "x": 340,
+        "y": 120,
+        "wires": []
+    }
+]

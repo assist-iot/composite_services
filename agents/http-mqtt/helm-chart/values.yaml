@@ -13,7 +13,7 @@ enablerNodeSelector: {}
 agent:
   tier: external
   image:
-    repository: ravaga/assistiot-agent-http-mqtt
+    repository: assistiot/composite-services-manager_agent-http-mqtt
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"

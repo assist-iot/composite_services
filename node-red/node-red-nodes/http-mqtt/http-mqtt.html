@@ -1,0 +1,52 @@
+<script type="text/javascript">
+  RED.nodes.registerType("http-mqtt", {
+    category: "ASSIST-IoT",
+    color: "#c47a98",
+    defaults: {
+      name: { value: "" },
+      requestBody: { value: "" },
+      requestInterval: { value: 5 },
+      translation: { value: "" },
+      properties: { value: ["translation","requestInterval","requestBody"] },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "assist-logo.png",
+    label: function () {
+      return this.name || "HTTP-MQTT";
+    },
+    oneditprepare: function () {
+      $("#node-input-translation").typedInput({
+        type: "json",
+        types: ["json"],
+      });
+      $("#node-input-requestBody").typedInput({
+        type: "json",
+        types: ["json"],
+      });
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="http-mqtt">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-requestInterval"><i class="fa fa-tag"></i> Request interval</label>
+    <input type="number " id="node-input-requestInterval" placeholder="Request interval (seconds)"/>
+  </div>
+  <div class="form-row">
+    <label for="node-input-requestBody"><i class="fa fa-tag"></i> Request body</label>
+    <input type="textarea" id="node-input-requestBody" placeholder="Request body"/>
+  </div>
+  <div class="form-row">
+    <label for="node-input-translation"><i class="fa fa-tag"></i> Translation</label>
+    <input type="textarea" id="node-input-translation" placeholder="Translation"/>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="http-mqtt">
+  <p>Moves data from MQTT topic to a HTTP endpoint</p>
+</script>
