@@ -8,7 +8,7 @@ const { deploySequence, deleteSequence, adaptNode, findLinkedNode, searchForArra
  * obtains the end nodes of all the Node-RED flows, and finally stores all the sequences in an array (sequences).
  * Then, retrieves the stores sequences from the LTSE (Elasticsearch) to compare the current with the previous status.
  * Finally, deletes the deployed sequences and deploys the created sequences by the user.
- * @return	{Object}							Result of the execution.
+ * @return		{Object}		Result of the execution.
 */
 const execute = async (req, res) => {
   const noderedUrl = config.noderedUrl;

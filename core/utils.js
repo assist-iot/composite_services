@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid')
 
 /** 
  * Deploys a sequence. The sequence definition is stored in the LTSE and the corresponding agent is deployed in the K8s cluster using its Helm chart.
- * @param		{Array}  sequence		Sequence
+ * @param		{Array}		sequence		Sequence
 */
 const deploySequence = async (sequence) => {
 	const intermediateNodes = Math.trunc(sequence.length / 2);
@@ -73,7 +73,7 @@ const deploySequence = async (sequence) => {
 
 /** 
  * Deletes a deployed sequence. The sequence definition is deleted from the LTSE and the Helm chart of the corresponding agent is deleted from the K8s cluster.
- * @param		{Array}  sequence		Sequence
+ * @param		{Array}		sequence		Sequence
 */
 const deleteSequence = async (sequence) => {
 	console.log('Sequence '.concat(sequence.id).concat(' has been deleted'));
@@ -93,7 +93,7 @@ const deleteSequence = async (sequence) => {
 /** 
  * Finds the linked previous node (from left to right) of another node.
  * @param		{Array}   flows				Node-RED flows of a tab.
- * @param 	{Array}   endNode		  Node-RED end node, which has to be found its previous linked node.
+ * @param		{Array}		endNode			Node-RED end node, which has to be found its previous linked node.
  * @param		{Array}   array				In this array will be stored the final sequence, which is an array of Node-RED nodes. It must contain the final node.
 */
 const findLinkedNode = (flows, endNode, array) => {
@@ -108,7 +108,7 @@ const findLinkedNode = (flows, endNode, array) => {
 
 /** 
  * Searches a sequence in an array of sequences
- * @param		{Array}   seq					Sequence, an array of objects.
+ * @param		{Array}		seq					Sequence, an array of objects.
  * @param 	{Array}   deployed		Array of sequences, an array of arrays.
  * @return	{Object}							Object with two properties: 1) isPresent (Boolean): 
  * 																if the sequence has been found in the array, 2) index (Number): index of the sequence in the array.
@@ -127,7 +127,7 @@ const searchForArray = (deployed, seq) => {
 
 /** 
  * Deletes x, y and wires properties from a Node-RED node object.
- * @param		{Object}  node				Node-RED node object.
+ * @param		{Object}		node			Node-RED node object.
 */
 const adaptNode = (node) => {
 	delete node.x;
