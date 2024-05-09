@@ -1,0 +1,67 @@
+[
+  {
+    "id": "24b15a875d1bb0de",
+    "type": "edbe",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "url": "edbe:1883",
+    "topic": "test-http-mqtt",
+    "properties": [
+      "topic",
+      "url"
+    ],
+    "interfacetype": "MQTT",
+    "x": 910,
+    "y": 360,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "967a5b6067cd6a52",
+    "type": "ltse",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "ltseurl": "http://ltse-api:8080",
+    "url": "http://ltse-api:8080/nosql/api/test-http-mqtt/_search",
+    "storagetype": "nosql",
+    "properties": [
+      "url",
+      "httpmethod"
+    ],
+    "elasticindex": "test-http-mqtt",
+    "sqltable": "",
+    "operation": "search",
+    "addparams": "",
+    "interfacetype": "HTTP",
+    "httpmethod": "post",
+    "x": 330,
+    "y": 360,
+    "wires": [
+      [
+        "f943d930d7ce363e"
+      ]
+    ]
+  },
+  {
+    "id": "f943d930d7ce363e",
+    "type": "http-mqtt",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "requestBody": "{\"size\":1}",
+    "requestInterval": "10",
+    "translation": "",
+    "properties": [
+      "translation",
+      "requestInterval",
+      "requestBody"
+    ],
+    "x": 610,
+    "y": 360,
+    "wires": [
+      [
+        "24b15a875d1bb0de"
+      ]
+    ]
+  }
+]

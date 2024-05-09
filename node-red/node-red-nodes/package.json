@@ -1,21 +1,27 @@
 {
-  "name": "assistiot-manageability",
+  "name": "@assistiot/composite-services-manager",
   "version": "1.0.0",
-  "description": "Node-red nodes for the ASSIST-IoT's manageability enabler composite services manager",
+  "description": "Node-RED nodes for the ASSIST-IoT's Composite services manager enabler",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": ">=16.0.0"
   },
   "keywords": [
     "ASSIST-IoT",
+    "node-red",
     "manageability",
     "composite-services",
     "enabler",
+    "agent",
+    "translation",
     "flow"
   ],
-  "author": "SATRD-UPV",
-  "license": "ISC",
+  "homepage": "https://assist-iot.eu",
+  "author": "Rafael Vaño <ravagar2@upv.es>",
+  "license": "Apache-2.0",
+  "repository": "github:assist-iot/composite_services",
   "node-red" : {
+    "version": ">=3.0.2",
     "nodes": {
       "edbe": "edbe/edbe.js",
       "ltse": "ltse/ltse.js",

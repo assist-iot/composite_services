@@ -1,0 +1,63 @@
+[
+  {
+    "id": "c79f1ff0ede132d1",
+    "type": "edbe",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "url": "edbe:1883",
+    "topic": "test-mqtt-http",
+    "properties": [
+      "topic",
+      "url"
+    ],
+    "interfacetype": "MQTT",
+    "x": 330,
+    "y": 280,
+    "wires": [
+      [
+        "173068fc322a3e8e"
+      ]
+    ]
+  },
+  {
+    "id": "4a80b48b76485e4a",
+    "type": "ltse",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "ltseurl": "http://ltse-api:8080",
+    "url": "http://ltse-api:8080/nosql/api/test-mqtt-http/_doc",
+    "storagetype": "nosql",
+    "properties": [
+      "url",
+      "httpmethod"
+    ],
+    "elasticindex": "test-mqtt-http",
+    "sqltable": "",
+    "operation": "insert",
+    "addparams": "",
+    "interfacetype": "HTTP",
+    "httpmethod": "post",
+    "x": 910,
+    "y": 280,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "173068fc322a3e8e",
+    "type": "mqtt-http",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "translation": "",
+    "properties": [
+      "translation"
+    ],
+    "x": 610,
+    "y": 280,
+    "wires": [
+      [
+        "4a80b48b76485e4a"
+      ]
+    ]
+  }
+]

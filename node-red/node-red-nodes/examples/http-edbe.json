@@ -1,0 +1,61 @@
+[
+  {
+    "id": "cd0ac2780f6d7c3a",
+    "type": "http-endpoint",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "url": "http://enabler-api:8080",
+    "properties": [
+      "url",
+      "httpmethod"
+    ],
+    "interfacetype": "HTTP",
+    "httpmethod": "get",
+    "x": 290,
+    "y": 440,
+    "wires": [
+      [
+        "69629331235652de"
+      ]
+    ]
+  },
+  {
+    "id": "69629331235652de",
+    "type": "http-mqtt",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "requestBody": "",
+    "requestInterval": "10",
+    "translation": "",
+    "properties": [
+      "translation",
+      "requestInterval",
+      "requestBody"
+    ],
+    "x": 610,
+    "y": 440,
+    "wires": [
+      [
+        "2f8de29d795390d3"
+      ]
+    ]
+  },
+  {
+    "id": "2f8de29d795390d3",
+    "type": "edbe",
+    "z": "e322fe11d8cc20e6",
+    "name": "",
+    "url": "edbe:1883",
+    "topic": "test-http-ednpoint-mqtt",
+    "properties": [
+      "topic",
+      "url"
+    ],
+    "interfacetype": "MQTT",
+    "x": 910,
+    "y": 440,
+    "wires": [
+      []
+    ]
+  }
+]
