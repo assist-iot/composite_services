@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="Fiber" height="90" src="img/ASSIST-IoT_logo_Hi-Res.jpg">
+    <img alt="Fiber" height="90" src="./img/ASSIST-IoT_logo_Hi-Res.jpg">
   <br>
 </div>
 

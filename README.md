@@ -13,7 +13,7 @@ This repository is structured in 4 folders:
 - **agents**: code and Helm charts of each agent (HTTP-MQTT and MQTT-HTTP).
 - **core**: code of the core component of the enabler.
 - **helm-chart**: Helm chart of the enabler itself (core and Node-RED, without the agents).
-- **node-red**: custom Node-RED for the enabler, which is used as the frontend part of it. This folder also includes the custom Node-RED nodes.
+- **node-red**: custom Node-RED for the enabler, which is used as the frontend part of it. This folder also includes the [custom Node-RED nodes](https://github.com/assist-iot/composite_services/tree/main/node-red/node-red-nodes), which are publicly available in the [Node-RED Flow Library](https://flows.nodered.org/node/@ravaga/assistiot-composite-services-manager).
 
 ## Documentation
 An extended documentation of the enabler is available in the [official ASSIST-IoT documentation](https://assist-iot-enablers-documentation.readthedocs.io/en/latest/verticals/manageability/management_of_services_and_enablers.html), which is in *Read the Docs* format.
