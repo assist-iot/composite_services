@@ -3,7 +3,7 @@ entries:
   agenthttpmqtt:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-05-08T17:07:13.809369956Z"
+    created: "2024-05-14T10:01:48.645729137Z"
     description: HTTP to MQTT agent for the Composite services manager of the ASSIST-IoT's
       manageability enablers
     digest: 60f8a6f1b32f3eb00cfae1c51d1cadeb5fcb9bd9df147488ab5a3f4ab47f1c32
@@ -15,7 +15,7 @@ entries:
   agentmqtthttp:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-05-08T17:07:13.809847525Z"
+    created: "2024-05-14T10:01:48.64616764Z"
     description: MQTT to HTTP agent for the HTTP to MQTT agent for the Composite services
       manager of the ASSIST-IoT's manageability enablers
     digest: ba4a000d670268ce2294d359f24858e6ce0dacafa93d426e754e31279ddbc148
@@ -27,10 +27,10 @@ entries:
   composite-services:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2024-05-08T17:07:13.810898724Z"
+    created: "2024-05-14T10:01:48.647151882Z"
     description: A Helm chart for the Composite services enabler, part of ASSIST-IoT
       manageability enablers
-    digest: 42d6d26b43b6f38892bcc1b12f0293128b97a77ff65d9dcbc6823ef70d0cc674
+    digest: 1f537d00345e8b7648bc5b0239c4baeaf59f4cc0d4cc12b22b19f202d8aea975
     maintainers:
     - email: ravagar2@upv.es
       name: Rafa Vaño
@@ -39,4 +39,4 @@ entries:
     urls:
     - composite-services-1.1.0.tgz
     version: 1.1.0
-generated: "2024-05-08T17:07:13.808246478Z"
+generated: "2024-05-14T10:01:48.645027962Z"
