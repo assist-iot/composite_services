@@ -7,7 +7,7 @@
 
 # Node-RED nodes for the [ASSIST-IoT](https://assist-iot.eu/) Composite services manager enabler
 
-![NPM Version](https://img.shields.io/npm/v/@ravaga/assistiot-composite-services-manager)
+[![NPM Version](https://img.shields.io/npm/v/@ravaga/assistiot-composite-services-manager)](https://www.npmjs.com/package/@ravaga/assistiot-composite-services-manager)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Website](https://img.shields.io/website?url=https://assist-iot.eu)](https://assist-iot.eu)
 

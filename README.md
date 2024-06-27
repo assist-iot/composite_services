@@ -1,5 +1,6 @@
 # Composite services manager
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CreatedBy](https://img.shields.io/badge/created%20by-ASSIST%20IoT-blue.svg)](https://assist-iot.eu)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Website](https://img.shields.io/website?url=https://assist-iot.eu)](https://assist-iot.eu)
 [![Read the Docs](https://img.shields.io/readthedocs/assist-iot-enablers-documentation)](https://assist-iot-enablers-documentation.readthedocs.io/en/latest/verticals/manageability/management_of_services_and_enablers.html)
 [![Docker Image Version](https://img.shields.io/docker/v/assistiot/composite-services-manager_core)](https://hub.docker.com/r/assistiot/composite-services-manager_core)
